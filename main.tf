@@ -41,6 +41,10 @@ resource "aws_efs_file_system" "this" {
   creation_token   = var.name
   performance_mode = "maxIO"
   throughput_mode  = "bursting"
+  
+  lifecycle_policy {
+    transition_to_ia = "AFTER_7_DAYS"
+  }
 
   tags = merge(
     {
