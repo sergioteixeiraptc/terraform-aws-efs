@@ -38,7 +38,9 @@ resource "aws_security_group" "this" {
 }
 
 resource "aws_efs_file_system" "this" {
-  creation_token = var.name
+  creation_token   = var.name
+  performance_mode = "maxIO"
+  throughput_mode  = "bursting"
 
   tags = merge(
     {
